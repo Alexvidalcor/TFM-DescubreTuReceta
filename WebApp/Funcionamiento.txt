@@ -1,0 +1,17 @@
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+█░▄▄▀█▀▄▄▀█░███▄██▀▄▀█░▄▄▀█▀▄▀██▄██▀▄▄▀█░▄▄▀████░███░█░▄▄█░▄▄▀
+█░▀▀░█░▀▀░█░███░▄█░█▀█░▀▀░█░█▀██░▄█░██░█░██░████░█░█░█░▄▄█░▄▄▀
+█░██░█░████▄▄█▄▄▄██▄██▄██▄██▄██▄▄▄██▄▄██▄██▄████▄▀▄▀▄█▄▄▄█▄▄▄▄
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+
+El código se estructura según la disposición estándar de Flask. De este modo, en el backend, el framework de Flask comanda toda la interacción del usuario que recibe desde la parte frontend.
+
+Backend:
+    - main.py
+
+Frontend:
+    - templates/
+    - static/
+
+Funciones de soporte para Flask:
+    - src/

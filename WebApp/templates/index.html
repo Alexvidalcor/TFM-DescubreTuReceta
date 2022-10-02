@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Main Datahackers Website">
+	<meta name="author" content="Datahackers">
+	<title>Datahackers - Home</title>
+
+	<link href="{{url_for('static', filename= 'css/bootstrap.min.css')}}" , rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="{{url_for('static', filename= 'css/cover.css')}}" , rel="stylesheet">
+
+	<!-- <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
+
+</head>
+
+
+<body class="d-flex h-400 text-center text-bg-dark">
+	<div class="container d-flex w-200 h-100 p-3 mx-auto flex-column">
+		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column mt-5">
+			<header class="mb-auto">
+				<div>
+					<h3 class="float-md-start mb-3">TFMproject</h3>
+					<nav class="nav nav-masthead justify-content-center float-md-end">
+						<a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
+						<a class="nav-link fw-bold py-1 px-0" href="#">Características</a>
+						<a class="nav-link fw-bold py-1 px-0" href="#">Contacto</a>
+					</nav>
+				</div>
+			</header>
+		</div>
+
+		<main class="px-3">
+			<h1>¡Descubre tu receta!</h1>
+			<p class="lead">Sumérgete en un increíble mundo repleto de nuevos descubrimientos y experiencias fascinantes
+			</p>
+			<!-- <p class="lead">
+				<a href="#" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Leer más</a>
+			</p> -->
+		</main>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm">
+					<h2 class="mt-5">MODO {{ mode }}</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<form class="form-group" method="post" action="{{ url_for('selection') }}" id="mode_form">
+					<label for="mode">Operación </label>
+					<select id="mode" name="mode">
+						<option value="PRODUCTO">Producto</option>
+						<option value="TICKET">Ticket</option>
+					</select>
+					<input class="btn btn-sm btn-secondary fw-bold border-white bg-white" type="submit"
+						value="Confirmar" />
+				</form>
+			</div>
+		</div>
+
+		<div class="container mt-2">
+			<div class="row d-flex align-items-center justify-content-center">
+
+				{% if request.MOBILE %}
+					{% set height = 320 %}
+				{% endif %}
+
+
+				<div class="col-md-4, collapse">
+					<h4>VIDEO</h4>
+					<video id="video" swidth="{{ width }}" height="{{ height }}" autoplay
+						style="background-color: grey"></video>
+				</div>
+
+				<div class="col-md-4, collapse">
+					<h4>CANVAS</h4>
+					<canvas id="canvas" width="{{ width }}" height="{{ height }}"
+						style="background-color: grey"></canvas>
+				</div>
+
+				<div class="col-md-4 mr-auto ml-auto">
+					<h4>Previa</h4>
+					<img id="server" src="" width="{{ width }}" height="{{ height }}" style="background-color: grey" />
+
+					{% if request.MOBILE %}
+					<form method="post" action="{{url_for('selectionCam', mainCamera=mainCamera)}}" >
+						<button type="submit" class="btn btn-lg btn-secondary fw-bold border-white bg-white mt-5 mb-5">
+							Cambiar Cámara
+						</button>
+					</form>
+					{% endif %}
+
+				</div>
+
+				<div class="col-md-4 mr-auto ml-auto">
+					<h4>Foto Tomada</h4>
+					<img id="screenshot_server" src="" width="{{ width }}" height="{{ height }}"
+						style="background-color: grey" />
+				</div>
+			</div>
+
+			<div class="h-100 d-flex align-items-center justify-content-center mt-5">
+
+				<div class="col-md-4 ">
+					<button onclick="collapse()" class="btn btn-lg btn-secondary fw-bold border-white bg-white"
+						id="send_server">
+						Tomar foto
+					</button>
+				</div>
+			</div>
+
+			<div class="h-100 d-flex align-items-center justify-content-center mt-5">
+
+				<div class="col-md-4, collapse" id="toCollapse">
+					<a href="{{ url_for('results') }}"
+						class="btn btn-lg btn-secondary fw-bold border-white bg-white">Ver resultados</a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+			<footer class="mt-auto text-white-50">
+				<p>Nuestro portfolio: <a href="https://www.datahackers.com.es/" , class="text-white">AQUÍ!</a></p>
+			</footer>
+		</div>
+
+
+
+		<script>
+
+			var video = document.getElementById('video');
+			var canvas = document.getElementById('canvas');
+			var context = canvas.getContext('2d');
+			var server = document.getElementById('server');
+			var screenshot_canvas = document.getElementById('screenshot_canvas');
+			var screenshot_server = document.getElementById('screenshot_server');
+
+			if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+
+				navigator.mediaDevices.getUserMedia(
+			{% if request.MOBILE and mainCamera == "environment" %}
+				{ video: { facingMode: 'environment' } }).then(function (stream) {
+			{% elif request.MOBILE and mainCamera == "user" %}
+				{ video: { facingMode: 'user' } }).then(function (stream) {
+			{% else %}
+					{ video: true }).then(function (stream) {
+			{% endif %}
+
+
+						video.srcObject = stream;
+						video.play();
+						window.setInterval(function () {
+							context.drawImage(video, 0, 0, {{ width }}, {{ height }}); // 
+			canvas.toBlob(upload, "image/jpeg");
+}, 100);
+		});
+	}
+
+
+			// Tomar foto
+			document.getElementById("send_server").addEventListener("click", function () {
+				screenshot_server.src = server.src;
+				context.drawImage(video, 0, 0, {{ width }}, {{ height }});
+			canvas.toBlob(save, "image/jpeg");
+});
+
+			// Obtener imagen del lienzo, enviar al servidor como POST, obtener imagen de resultado, mostrar imagen como IMG
+			function upload(file) {
+
+				// crear formulario y agregar archivo
+				var formdata = new FormData();
+				formdata.append("snap", file);
+
+				// Creat Conexión AJAX
+				fetch("{{ url_for('upload') }}", {
+					method: 'POST',
+					body: formdata,
+				}).then(function (response) {
+					return response.blob();
+				}).then(function (blob) {
+					server.src = URL.createObjectURL(blob);
+				});
+
+			}
+
+			function save(file) {
+				var formdata = new FormData();
+				formdata.append("snap", file);
+
+				var xhr = new XMLHttpRequest();
+				xhr.open("POST", "{{ url_for('save') }}", true);
+				xhr.onload = function () {
+					if (this.status = 200) {
+						console.log(this.response);
+					} else {
+						console.error(xhr);
+					}
+					alert(this.response);
+					if (this.response != "Error :(") {
+						collapse()
+					}
+				};
+				xhr.send(formdata);
+				;
+			}
+
+			function collapse() {
+				var x = document.getElementById("toCollapse");
+				if (x.style.display === "none") {
+					x.style.display = "block";
+				} else {
+					x.style.display = "none";
+				}
+			}
+
+
+		</script>
+
+	</div>
+</body>
+
+
+</html>

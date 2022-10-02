@@ -1,0 +1,21 @@
+▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄
+██░███░█░▄▄█░▄▄▀█░▄▄█▀▄▀█░▄▄▀█░▄▄▀█▀▄▄▀█▀▄▄▀██▄██░▄▄▀█░▄▄▄
+██░█░█░█░▄▄█░▄▄▀█▄▄▀█░█▀█░▀▀▄█░▀▀░█░▀▀░█░▀▀░██░▄█░██░█░█▄▀
+██▄▀▄▀▄█▄▄▄█▄▄▄▄█▄▄▄██▄██▄█▄▄█▄██▄█░████░████▄▄▄█▄██▄█▄▄▄▄
+▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀
+
+Código basado en la librería de Selenium scrappear imágenes de 'Google Imágenes' en base a unos criterios predefinidos.
+
+Definición de archivos:
+
+    - report_scrapping_images.ipynb
+        - Archivo empleado para tests rápidos y como informe final de funcionamiento detallado del funcionamiento del webscrapping.
+
+    - scrapping_images.py
+        - Archivo utilizado para productivización en cloud.
+
+    - values_scrapping_images.py
+        - Archivo que almacena variables para modificar el comportamiento de 'scrapping_images.py' de una forma independiente a éste y de forma más sencilla.
+
+    - Dockerfile
+        - Fue empleado para facilitar la productivización del scrapeo en entornos cloud.

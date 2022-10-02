@@ -1,0 +1,9 @@
+# Frameworks web de backend
+flask
+flask_mobility
+
+# Procesado de imágenes
+python3-opencv-contrib
+
+# Manejo de dataframes
+pandas

@@ -1,0 +1,56 @@
+
+
+<!-- NO FUNCIONAL - SE IMPLEMENTARÁ CUANDO SE INTEGRE LA DETECCIÓN DE PRODUCTOS -->
+
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Main Datahackers Website">
+	<meta name="author" content="Datahackers">
+	<title>Datahackers - Home</title>
+
+	<link href="static/bootstrap.min.css" , rel="stylesheet">
+
+
+	<!-- Custom styles for this template -->
+	<link href="static/cover.css" rel="stylesheet">
+</head>
+
+
+<body class="d-flex h-400 text-center text-bg-dark">
+	<div class="container d-flex w-200 h-100 p-3 mx-auto flex-column">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm">
+					<h1 class="mt-5">PRODUCTO DETECTADO</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm">
+					<h2 class="mt-5">Hemos detectado:</h2>
+					<p>{{ lista_imagenes_detected 
+                    }}</p>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+			<footer class="mt-auto text-white-50">
+				<p>Nuestro portfolio: <a href="https://www.datahackers.com.es/" , class="text-white">AQUÍ!</a></p>
+			</footer>
+		</div>
+
+	</div>
+</body>
+
+</html>

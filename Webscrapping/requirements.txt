@@ -1,0 +1,6 @@
+# Cleaning
+pandas
+
+# Webscrapping
+selenium
+webdriver-manager

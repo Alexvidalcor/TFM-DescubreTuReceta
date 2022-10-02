@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" class="h-100">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Main Datahackers Website">
+	<meta name="author" content="Datahackers">
+	<title>Datahackers - Home</title>
+
+	<link href="static/bootstrap.min.css" , rel="stylesheet">
+
+
+	<!-- Custom styles for this template -->
+	<link href="static/cover.css" rel="stylesheet">
+</head>
+
+
+<body class="d-flex h-400 text-center text-bg-dark">
+	<div class="container d-flex w-200 h-100 p-3 mx-auto flex-column">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm">
+					<h1 class="mt-5">TOP RECETAS</h1>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-sm">
+					<h2 class="mt-5">Hemos detectado:</h2>
+					<p>{{ lista_prod_detected }}</p>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container mt-5">
+			<div class="row">
+				<form class="form-group" action="{{ url_for('selectionrecipe') }}">
+					<label>Top Recetas</label>
+					<select name="recipe_chosen">
+						<option value="0">Mejor Receta</option>
+						<option value="1">Segunda receta</option>
+						<option value="2">Tercera receta</option>
+						<option value="3">Cuarta receta</option>
+						<option value="4">Quinta receta</option>
+
+					</select>
+					<input class="btn btn-sm btn-secondary fw-bold border-white bg-white" type="submit"
+						value="Confirmar" />
+				</form>
+			</div>
+		</div>
+
+		<div class="container mt-2">
+			<div class="row d-flex align-items-center justify-content-center">
+				<div class="col-w-75 p-3">
+					<p>
+						{% for table in df_web %}
+							{{titles_web[loop.index]}}
+							{{ table|safe }}
+						{% endfor %}
+					</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+			<footer class="mt-auto text-white-50">
+				<p>Nuestro portfolio: <a href="https://www.datahackers.com.es/" , class="text-white">AQUÍ!</a></p>
+			</footer>
+		</div>
+
+	</div>
+</body>
+
+</html>
