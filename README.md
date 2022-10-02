@@ -25,7 +25,7 @@ Somos un equipo multidisciplinar y apasionado por el mundo de los datos.
 ## Demostración 📷
 
 
-![Demo1_1](https://github.com/Alexvidalcor/DatathonProject/blob/main/Inputs/Tfm-ImageReadme1.gif?raw=true)
+![Demo1_1](https://github.com/Alexvidalcor/TFM-DescubreTuReceta/blob/main/Input/Tfm-ImageReadme1.gif)
 
 ## Herramientas utilizadas 🛠️
 
